@@ -1,0 +1,381 @@
+
+// planning planning 
+
+-Get this bot to play NOBS line as stated in the book. 
+-Check with database NO_BS in poker tracker. 
+-Target volume : 200 per days of bot playing. 
+-5 bugs squashed every week. 
+-Redefining fucntions
+
+//******************************************************************************
+//				 			C O N F I G U R A T I O N							
+//							=========================
+//						   Teaches the bot how to play
+//    	Inspired by the NOBS Guide from BestPokerCoaching. 
+//		Designed to play 2nl 5 max at Winamax.fr and win. A max. 
+//******************************************************************************
+
+//******************************************************************************
+//				 			G E N E R A L   C O N F I G 							
+//							===========================
+//                    #1 in fine tunning 
+//******************************************************************************
+
+// to be deprecated
+##f$StandardRaise##
+3
+
+// to be redesigned Value(70-90% pot), Thin Value(70-55% pot ),  Bluff (55-40% pot), Probebet (30% pot). 
+##f$StandardBet##
+// Pct of the potsize
+66
+
+//to be deprecated
+##f$ShortStackBB##
+// Number of BigBlinds for ShortStack Player. Default 40BB
+40
+
+// to be deprecated
+##f$DeepStackBB##
+// Number of BigBlinds for DeepStack Player. Default 140BB
+140
+
+//******************************************************************************
+//				 			S E T U P   H A N D L I S T
+//							===========================
+//							#1 RIGHT NOW !  
+//
+//
+//	For debugging purpose the default hand lists were set as follow:	
+//		- Suited Hand: Action taken Raise or Bet
+//		- OffSuited Hand: Action taken Call or Check
+//		- Pair: Action taken Check or Fold
+//
+//  Change the default hand lists to your need.
+//
+//  Leave blank unnecessary positions:
+// 		- EP1 exist if the game is 10-handed;
+//		- EP2 exist if the game is 9-handed;
+//		- EP3 exist if the game is 8-handed and so on...
+//
+//  So if you are planning to use this bot on 6max, leave blank EP1, EP2, EP3 and MP1
+//
+//******************************************************************************
+
+//******************************************************************************
+// OpenRaising Hands by Position
+//******************************************************************************
+##listOpenRaiseEP1##
+
+
+##listOpenRaiseEP2##
+
+
+##listOpenRaiseEP3##
+
+
+##listOpenRaiseMP1##
+AA  AK  AQ  AJ  ATs  
+    KK  KQs KJs KTs
+	  	QQ  QJs QTs
+			JJ  JTs J9s
+			 	TT  T9s	
+    				99  98s
+    					88  87s
+    						77 	76s
+    							66 
+    								55 
+    									44 
+    										33 
+    											22
+
+##listOpenRaiseMP2##
+AA KK QQ JJ TT 99 88 77 66 55 44 33 22
+AK AQ AJ AT A5s A4s A3s A2s 
+KQs KJs KTs  
+QJs QTs 
+JTs J9s
+T9s 
+98s 
+87s
+76s
+
+##listOpenRaiseMP3##
+
+AA KK QQ JJ TT 99 88 77 66 55 44 33 22
+AK AQ AJ AT A5s A4s A3s A2s 
+KQs KJs KTs  
+QJs QTs 
+JTs J9s
+T9s T8s
+98s 97s
+87s
+76s
+
+##listOpenRaiseCO##
+
+AA KK QQ JJ TT 99 88 77 66 55 44 33 22
+AK AQ AJ AT A9 A8 A7s A6s A5s A4s A3s A2s 
+KQ KJ KT K9s K8s 
+QJ QT Q9s Q8s 
+JT J9s J8s 
+T9s T8s
+98s 97s
+87s 86s 
+76s 75s
+65s
+
+##listOpenRaiseBTN##
+AA KK QQ JJ TT 99 88 77 66 55 44 33 22
+AK AQ AJ AT A9 A8 A7 A6 A5 A4 A3 A2 
+KQ KJ KT K9 K8 K7 K6 K5 K4s K3s K2s      
+QJ QT Q9 Q8 Q7 Q6 Q5s Q4s Q3s Q2s  
+JT J9 J8 J7 J6s J5s J4s J3s J2s
+T9 T8 T7 T6 T5s T4s T3s T2s  
+98 97 96 95s 94s 93s 92s  
+87 86 85s 84s 83s 82s  
+76 75 74s 73s 72s  
+65 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+
+##listOpenRaiseSB##
+AA KK QQ JJ TT 99 88 77 66 55 44 33 22
+AK AQ AJ AT A9 A8 A7 A6 A5 A4 A3 A2 
+KQ KJ KT K9 K8 K7 K6 K5 K4s K3s K2s      
+QJ QT Q9 Q8 Q7 Q6 Q5s Q4s Q3s Q2s  
+JT J9 J8 J7 J6s J5s J4s J3s J2s
+T9 T8 T7 T6 T5s T4s T3s T2s  
+98 97 96 95s 94s 93s 92s  
+87 86 85s 84s 83s 82s  
+76 75 74s 73s 72s  
+65 64s 63s 62s  
+54s 53s 52s  
+43s 42s  
+32s
+//******************************************************************************
+// OpenLimping Hands by Position
+//******************************************************************************
+##listOpenLimpEP1##
+
+
+##listOpenLimpEP2##
+
+
+##listOpenLimpEP3##
+
+
+##listOpenLimpMP1##
+
+
+##listOpenLimpMP2##
+
+
+##listOpenLimpMP3##
+
+
+##listOpenLimpCO##
+
+
+##listOpenLimpBTN##
+
+
+##listOpenLimpSB##
+
+
+//******************************************************************************
+// IsolatingLimpers Hands by Position
+//******************************************************************************
+##listIsolateLimpersEP2##
+
+
+##listIsolateLimpersEP3##
+
+
+##listIsolateLimpersMP1##
+
+
+##listIsolateLimpersMP2##
+
+
+##listIsolateLimpersMP3##
+
+
+##listIsolateLimpersCO##
+
+
+##listIsolateLimpersBTN##
+
+
+##listIsolateLimpersSB##
+
+
+##listIsolateLimpersBB##
+
+
+//******************************************************************************
+// Limping Hands by Position
+//******************************************************************************
+##listLimpEP1##
+
+
+##listLimpEP2##
+
+
+##listLimpEP3##
+
+
+##listLimpMP1##
+
+
+##listLimpMP2##
+
+
+##listLimpMP3##
+
+
+##listLimpCO##
+
+
+##listLimpBTN##
+
+
+##listLimpSB##
+
+
+//******************************************************************************
+// 3Bet or ColdCall a raise when no call before Hero first action
+//******************************************************************************
+##list3BetIP##
+
+
+##list3BetOOP##
+
+
+##listCallRaiseWhenNoCallIP##
+
+
+##listCallRaiseWhenNoCallOOP##
+
+
+//******************************************************************************
+// Squeeze or coldcall a raise when 1 or more call before Hero first action
+//******************************************************************************
+##listSqueezeIP##
+
+
+##listSqueezeOOP##
+
+
+##listCallRaiseWhenOthersCallsIP##
+
+
+##listCallRaiseWhenOthersCallsOOP##
+
+
+//******************************************************************************
+// 4Bet or ColdCall when Hero Facing 3Bet before first action
+//******************************************************************************
+##list4BetBeforeHeroFirstActionIP##
+
+
+##list4BetBeforeHeroFirstActionOOP##
+
+
+##listColdCall3BetBeforeHeroFirstActionIP##
+
+
+##listColdCall3BetBeforeHeroFirstActionOOP##
+
+
+//******************************************************************************
+// 5Bet or ColdCall when Hero Facing 4Bet before first action
+//******************************************************************************
+##list5BetBeforeHeroFirstActionIP##
+
+
+##list5BetBeforeHeroFirstActionOOP##
+
+
+##listColdCall4BetBeforeHeroFirstActionIP##
+
+
+##listColdCall4BetBeforeHeroFirstActionOOP##
+
+
+//******************************************************************************
+// 6Bet or ColdCall when Hero Facing 5Bet before first action
+//******************************************************************************
+##list6BetBeforeHeroFirstActionIP##
+
+
+##list6BetBeforeHeroFirstActionOOP##
+
+
+##listColdCall5BetBeforeHeroFirstActionIP##
+
+
+##listColdCall5BetBeforeHeroFirstActionOOP##
+
+
+//******************************************************************************
+// 4Bet or ColdCall when Hero is the original raiser and Facing 3Bet
+//******************************************************************************
+##list4BetIP##
+
+
+##list4BetOOP##
+
+
+##listColdCall3BetIP##
+
+
+##listColdCall3BetOOP##
+
+
+//******************************************************************************
+// 4Bet or ColdCall when Hero is the original raiser and Facing Squeeze
+//******************************************************************************
+##list4BetVsSqueezeIP##
+
+
+##list4BetVsSqueezeOOP##
+
+
+##listColdCallSqueezeIP##
+
+
+##listColdCallSqueezeOOP##
+
+
+//******************************************************************************
+// 5Bet or ColdCall when Hero is the 3bettor and Facing 4Bet
+//******************************************************************************
+##list5BetIP##
+
+
+##list5BetOOP##
+
+
+##listColdCall4BetIP##
+
+
+##listColdCall4BetOOP##
+
+
+//******************************************************************************
+// 6Bet or ColdCall when Hero is the 4bettor and Facing 5Bet
+//******************************************************************************
+##list6BetIP##
+
+
+##list6BetOOP##
+
+
+##listColdCall5BetIP##
+
+
+##listColdCall5BetOOP##
+
+
