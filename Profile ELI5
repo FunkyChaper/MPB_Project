@@ -1,0 +1,6 @@
+- Take down Preflop 
+              - First raise in situation.
+              - Tackle already open pots : - raised
+                                           - limped
+Preflop elements : Position of each player at the table. 
+The goal is to narrate the hand to the IA, then let the IA work the logic and take the decision.
